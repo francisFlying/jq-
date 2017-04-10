@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        ul li{
+            list-style: none;
+            float:left;
+            cursor:pointer;
+            font-size:50px;
+        }
+
+    </style>
+</head>
+<body>
+    <ul>
+        <li>☆</li>
+        <li>☆</li>
+        <li>☆</li>
+        <li>☆</li>
+        <li>☆</li>
+    </ul>
+</body>
+<script src="../jquery-1.12.4.js"></script>
+<script>
+    $(function(){
+        var solid="★";
+        var hollow="☆";
+        $("li").mouseover(function(){
+            $(this).text(solid).prevAll().text(solid);
+            $(this).nextAll().text(hollow);
+        });
+        $("li").mouseleave(function(){
+            $("li").text(hollow);
+            $(".clicked").text(solid).prevAll().text(solid);
+        });
+        $("li").click(function(){
+            $(this).addClass("clicked").siblings().removeClass("clicked");
+        })
+    })
+</script>
+</html>
